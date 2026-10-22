@@ -6,7 +6,7 @@
 /*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 10:26:46 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/10/22 11:39:57 by mhatamle         ###   ########.fr       */
+/*   Updated: 2026/10/22 13:23:00 by mhatamle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ void	ra(t_stack **a)
 		last = last->next;
 	last->next = tmp;
 	tmp->next = NULL;
+	*a = first_next;
 
 }
+
+void	pb(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+
+	if (!a || !*a)
+		return;
+	tmp = *a;
+	*a = tmp->next;
+	tmp->next = *b;
+	*b = tmp;
+}
+
 
