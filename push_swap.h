@@ -6,7 +6,7 @@
 /*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 10:40:45 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/10/22 10:43:17 by mhatamle         ###   ########.fr       */
+/*   Updated: 2026/10/22 14:16:45 by mhatamle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ typedef struct s_stack
 {
 	int		value;
 	struct	s_stack *next;
+	struct	s_stack *prev;
 } t_stack;
