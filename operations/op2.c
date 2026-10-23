@@ -14,12 +14,10 @@
 
 void	pb(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
+	push(a, b);
+}
 
-	if (!a || !*a)
-		return;
-	tmp = *a;
-	*a = tmp->next;
-	tmp->next = *b;
-	*b = tmp;
+void	ba(t_stack **a, t_stack **b)
+{
+	push(b, a);
 }
