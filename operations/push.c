@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void    push(t_stack **src, t_stack **dst)
+void push(t_stack **src, t_stack **dst)
 {
     t_stack *tmp;
 
@@ -21,10 +21,20 @@ void    push(t_stack **src, t_stack **dst)
     tmp = *src;
     *src = tmp->next;
     if (*src)
-        (*src)->prev =  NULL;
+        (*src)->prev = NULL;
     tmp->next = *dst;
     if (*dst)
         (*dst)->prev = tmp;
     tmp->prev = NULL;
     *dst = tmp;
+}
+
+void pb(t_stack **a, t_stack **b)
+{
+    push(a, b);
+}
+
+void ba(t_stack **a, t_stack **b)
+{
+    push(b, a);
 }
