@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRCS = push_swap.c ra.c pb.c pa.c
+SRCS = push_swap.c push.c swap.c rotate.c reverse_rotate.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
