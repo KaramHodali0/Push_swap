@@ -32,3 +32,20 @@ void reverse_rotate(t_stack_list *stack)
     stack->head = last;
     stack->tail = before_last;
 }
+
+void rra(t_stack_list *a)
+{
+    reverse_rotate(a);
+}
+
+void rrb(t_stack_list *b)
+{
+    reverse_rotate(b);
+}
+
+void rrr(t_stack_list *a, t_stack_list *b)
+{
+    rra(a);
+    rrb(b);
+}
+
