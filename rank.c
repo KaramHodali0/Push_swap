@@ -73,3 +73,8 @@ int get_chunk_size(int len)
    root = sqrt(len);
    return (int)root;
 }
+
+void    sort_chunks(t_stack_list *a, t_stack_list *b, int *rank)
+{
+    
+}

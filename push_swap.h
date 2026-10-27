@@ -16,10 +16,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
+#include "libft/libft.h"
 
 typedef struct s_stack
 {
 	int value;
+	int rank;
 	struct s_stack *next;
 	struct s_stack *prev;
 } t_stack;

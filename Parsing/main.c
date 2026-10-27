@@ -12,8 +12,10 @@
 
 int	main(int argc, char *argv[])
 {
-	// while there is argvv enter the loop 
-	// wif there is no flag (-- simple ...etc)
-	//
-	//
-}
+	int i;
+
+	i = 0;
+	while (argc > i)
+	{
+		
+	}
