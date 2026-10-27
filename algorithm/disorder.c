@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pew.c                                              :+:      :+:    :+:   */
+/*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 14:37:16 by kalhouda          #+#    #+#             */
-/*   Updated: 2026/10/25 16:23:31 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/10/25 17:03:53 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ float	disorder(t_stack *stack, long size)
 	}
 	if (total == 0)
 		return (0);
-	return ((float)(mistake / total));
+	return ((float)mistake / total);
 }
