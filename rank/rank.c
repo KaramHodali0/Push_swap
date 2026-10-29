@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rank.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/29 09:22:41 by mhatamle          #+#    #+#             */
+/*   Updated: 2026/10/29 09:22:45 by mhatamle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "push_swap.h"
 
@@ -52,6 +64,8 @@ int *get_rank(t_stack *stack)
     int len;
 
     len = size(stack);
+    if (len == 0)
+        return (0);
     arr = get_copy(stack);
     if (!arr)
         return (NULL);
@@ -72,9 +86,4 @@ int get_chunk_size(int len)
    
    root = sqrt(len);
    return (int)root;
-}
-
-void    sort_chunks(t_stack_list *a, t_stack_list *b, int *rank)
-{
-    
 }

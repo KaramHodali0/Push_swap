@@ -10,12 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char *argv[])
+#include "push_swap.h"
+int   main(t_stack_list *a, int argc, char **argv)
 {
-	int i;
+    int i;
+    int value;
 
-	i = 0;
-	while (argc > i)
-	{
-		
-	}
+    i = 1;
+    while (argc > i)
+    {
+        value = ft_atoi(argv[i]);
+        i++;
+    }
+}
