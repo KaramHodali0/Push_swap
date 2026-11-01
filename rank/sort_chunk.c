@@ -93,3 +93,36 @@ int find_max_position(t_stack *b)
     }
     return (max_pos);
 }
+
+void    sort_back_to_a(t_stack_list *a, t_stack_list *b)
+{
+    int max_pos;
+    int len;
+    int i;
+
+    while (b->head != NULL)
+    {
+        len = size(b->head);
+        max_pos = find_max_position(b->head);
+        if (max_pos <= len/ 2)
+        {
+            i = 0;
+            while (i < max_pos)
+            {
+                rb(b);
+                i++;
+            }
+        }
+        else
+        {
+            i = 0;
+            while (i < len - max_pos)
+            {
+                rrb(b);
+                i++;
+            }
+        }
+        pa(a, b);
+    }
+}
+

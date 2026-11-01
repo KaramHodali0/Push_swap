@@ -33,15 +33,11 @@ void rotate(t_stack_list *stack)
 
 void ra(t_stack_list *a)
 {
-	if (!a || !(a)->head)
-		return;
 	rotate(a);
 }
 
 void rb(t_stack_list *b)
 {
-	if (!b || !(b)->head)
-		return;
 	rotate(b);
 }
 
