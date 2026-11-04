@@ -6,7 +6,7 @@
 /*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 10:38:52 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/10/29 10:38:54 by mhatamle         ###   ########.fr       */
+/*   Updated: 2026/11/04 09:40:43 by mhatamle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void    push_chunk(t_stack_list *a, t_stack_list *b, int start , int end)
 
     len = size(a->head);
     i = 0;
-    while (i < len)
+    while (i < len && a-> head != NULL)
     {
         node = a->head;
         if (node->rank >= start && node->rank <= end)
@@ -104,7 +104,7 @@ void    sort_back_to_a(t_stack_list *a, t_stack_list *b)
     {
         len = size(b->head);
         max_pos = find_max_position(b->head);
-        if (max_pos <= len/ 2)
+        if (max_pos <= len - max_pos)
         {
             i = 0;
             while (i < max_pos)

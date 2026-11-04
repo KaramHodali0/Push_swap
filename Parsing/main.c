@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 15:54:25 by kalhouda          #+#    #+#             */
-/*   Updated: 2026/11/03 14:24:57 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/04 10:26:01 by mhatamle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,22 @@ int   main(int argc, char **argv)
     int value;
     t_stack *node;
     t_stack_list a;
+    char **numbers;
 
     a.head = NULL;
     a.tail = NULL;
     i = 1;
-
-
-    // this condition is for this case ./a.out "1 2 3 4"
-
     if (argc == 2)
     {
+        numbers = ft_split(argv[1], ' ');
+        if (numbers == NULL)
+            return (1);
         i = 0;
-        while (argv[1][i] != '\0')
+        while (numbers[i] != NULL)
         {
-            // we have to check if there is Integer Overflow. also right here
-            value = ft_atoi(argv[1][i]);
+            value = ft_atoi(numbers[i]);
             node = new_node(value);
-             if (node == NULL)
+            if (node == NULL)
             {
                 free_stack(&a);
                 return (1);
@@ -43,15 +42,10 @@ int   main(int argc, char **argv)
             i++;
         }
     }
-
-
-    // this while is for this case ./a.out 1 2 3 4
-
     else
     {
     while (argc > i)
     {
-        // we have to check if there is Integer Overflow.
         value = ft_atoi(argv[i]);
         i++;
         node = new_node(value);
@@ -62,6 +56,6 @@ int   main(int argc, char **argv)
         }
         add_node_back(&a, node);
     }
-    }
+    free_split(numbers);
     return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 14:27:52 by kalhouda          #+#    #+#             */
-/*   Updated: 2026/11/03 15:56:36 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/04 10:28:37 by mhatamle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool check_duplicate (char *str)
     return (0);
 }
 
-bool    is_valid_syntax(char *str);
+bool    is_valid_syntax(char *str)
 {
     int sign;
 
