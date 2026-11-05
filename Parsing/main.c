@@ -3,59 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 15:54:25 by kalhouda          #+#    #+#             */
-/*   Updated: 2026/11/04 10:26:01 by mhatamle         ###   ########.fr       */
+/*   Updated: 2026/11/05 23:33:18 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int   main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     int i;
-    int value;
-    t_stack *node;
-    t_stack_list a;
     char **numbers;
+    char **args;
+    t_stack_list a;
 
     a.head = NULL;
     a.tail = NULL;
-    i = 1;
+    numbers = NULL;
+    if (argc == 1)
+        return (0);
     if (argc == 2)
     {
         numbers = ft_split(argv[1], ' ');
-        if (numbers == NULL)
+        if (!numbers)
             return (1);
-        i = 0;
-        while (numbers[i] != NULL)
-        {
-            value = ft_atoi(numbers[i]);
-            node = new_node(value);
-            if (node == NULL)
-            {
-                free_stack(&a);
-                return (1);
-            }
-            add_node_back(&a, node);
-            i++;
-        }
+        args = numbers;
     }
     else
+        args = &argv[1];
+    i = 0;
+    while (args[i])
     {
-    while (argc > i)
-    {
-        value = ft_atoi(argv[i]);
-        i++;
-        node = new_node(value);
-        if (node == NULL)
+        if (!validate_and_add(&a, args[i]))
         {
+            free_split(numbers);
             free_stack(&a);
+            write(2, "Error\n", 6);
             return (1);
         }
-        add_node_back(&a, node);
+        i++;
     }
     free_split(numbers);
+    free_stack(&a);
     return (0);
 }

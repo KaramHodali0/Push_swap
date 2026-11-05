@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 10:40:45 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/11/04 10:31:29 by mhatamle         ###   ########.fr       */
+/*   Updated: 2026/11/05 15:42:36 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-
+#include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
 #include "libft/libft.h"
+#include <stdbool.h>
 
 typedef struct s_stack
 {
@@ -42,24 +43,24 @@ void ra(t_stack **a);
 void rb(t_stack **b);
 void sa(t_stack **a);
 void sb(t_stack **b);
-void	free_split(char **numbers);
+void free_split(char **numbers);
 void free_stack(t_stack_list *stack);
 t_stack *new_node(int value);
 void add_node_back(t_stack_list *stack, t_stack *node);
-bool check_duplicate (char *str);
-bool    is_valid_syntax(char *str);
-bool    is_within_int_range(char *str);
-void   init_stack(t_stack_list *a, int argc, char **argv);
-void    init_rank(t_stack_list *a, int *rank, int len);
+bool check_duplicate(char *str);
+bool is_valid_syntax(char *str);
+bool is_within_int_range(char *str);
+void init_stack(t_stack_list *a, int argc, char **argv);
+void init_rank(t_stack_list *a, int *rank, int len);
 int *get_copy(t_stack *stack);
-void    check_sorted(int *arr, int *rank, int len);
+void check_sorted(int *arr, int *rank, int len);
 int *get_rank(t_stack *stack);
 int get_chunk_size(int len);
-static void    push_chunk(t_stack_list *a, t_stack_list *b, int start , int end);
-void    sort_chunks(t_stack_list *a, t_stack_list *b);
-int   find_max_rank(t_stack *b);
+static void push_chunk(t_stack_list *a, t_stack_list *b, int start, int end);
+void sort_chunks(t_stack_list *a, t_stack_list *b);
+int find_max_rank(t_stack *b);
 int find_max_position(t_stack *b);
-void    sort_back_to_a(t_stack_list *a, t_stack_list *b);
-
+void sort_back_to_a(t_stack_list *a, t_stack_list *b);
+long atol(const char *nptr);
 
 #endif
