@@ -6,7 +6,7 @@
 /*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 10:40:45 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/11/05 15:42:36 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/05 23:35:47 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void sort_chunks(t_stack_list *a, t_stack_list *b);
 int find_max_rank(t_stack *b);
 int find_max_position(t_stack *b);
 void sort_back_to_a(t_stack_list *a, t_stack_list *b);
-long atol(const char *nptr);
+int validate_and_add(t_stack_list *a, char *str);
 
 #endif
