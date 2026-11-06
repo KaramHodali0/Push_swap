@@ -20,7 +20,7 @@ int *get_copy(t_stack *stack)
     int *rank;
 
     len = size(stack);
-    if (len == 0)
+    if (len <= 0)
         return (NULL);
     rank = malloc(sizeof(int) * len);
     if (!rank)
@@ -64,8 +64,8 @@ int *get_rank(t_stack *stack)
     int len;
 
     len = size(stack);
-    if (len == 0)
-        return (0);
+    if (len <= 0)
+        return (NULL);
     arr = get_copy(stack);
     if (!arr)
         return (NULL);
@@ -84,6 +84,8 @@ int get_chunk_size(int len)
 {
    double root;
    
+   if (len <= 0)
+         return (0);
    root = sqrt(len);
-   return (int)root;
+   return ((int)root);
 }

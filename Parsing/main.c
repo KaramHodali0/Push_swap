@@ -14,13 +14,17 @@
 
 int main(int argc, char **argv)
 {
-    int i;
-    char **numbers;
-    char **args;
-    t_stack_list a;
+    int             i;
+    int             *rank;
+    char            **numbers;
+    char            **args;
+    t_stack_list    a;
+    t_stack_list    b;
 
     a.head = NULL;
     a.tail = NULL;
+    b.head = NULL;
+    b.tail = NULL;
     numbers = NULL;
     if (argc == 1)
         return (0);
@@ -46,6 +50,22 @@ int main(int argc, char **argv)
         i++;
     }
     free_split(numbers);
+    if (size(a.head) <= 1)
+    {
+        free_stack(&a);
+        return (0);
+    }
+    rank = get_rank(a.head);
+    if (!rank || !init_rank(&a, rank, size(a.head)))
+    {
+        free(rank);
+        free_stack(&a);
+        return (1);
+    }
+    free(rank);
+    sort_chunks(&a, &b);
+    sort_back_to_a(&a, &b);
     free_stack(&a);
+    free_stack(&b);
     return (0);
 }

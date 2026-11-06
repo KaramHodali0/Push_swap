@@ -12,29 +12,44 @@
 
 #include "push_swap.h"
 
-long atol(const char *nptr)
-{
-    char *str;
-    int sign;
-    long number;
 
-    str = (char *)nptr;
-    while (*str == ' ' || (*str >= 9 && *str <= 13))
-        str++;
-    sign = 0;
+int check_overflow(long number, int digit, long limit)
+{
+    if (number > (limit - digit) / 10)
+        return (0);
+    return (1);
+}
+
+int ft_atol(const char *str, long *result)
+{
+    int     sign;
+    long    number;
+    long    limit;
+
+    if (!str || !result)
+        return (0);
+    sign = 1;
     if (*str == '-' || *str == '+')
     {
         if (*str == '-')
-            sign++;
+            sign = -1;
         str++;
     }
+    if (*str < '0' || *str > '9')
+        return (0);
+    limit = INT_MAX;
+    if (sign == -1)
+        limit = (long)INT_MAX + 1;
     number = 0;
     while (*str >= '0' && *str <= '9')
     {
-        number = (number * 10) + *str - '0';
+        if (!check_overflow(number, *str - '0', limit))
+            return (0);
+        number = number * 10 + (*str - '0');
         str++;
     }
-    if (sign % 2 != 0)
-        number *= -1;
-    return (number);
+    if (*str != '\0')
+        return (0);
+    *result = number * sign;
+    return (1);
 }

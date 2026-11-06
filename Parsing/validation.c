@@ -12,28 +12,6 @@
 
 #include "push_swap.h"
 
-bool check_duplicate(t_stack *stack)
-{
-    t_stack *current;
-    t_stack *next_current;
-
-    if (stack == NULL)
-        return (0);
-    current = stack;
-    while (current)
-    {
-        next_current = current->next;
-        while (next_current)
-        {
-            if (current->value == next_current->value)
-                return (1);
-            next_current = next_current->next;
-        }
-        current = current->next;
-    }
-    return (0);
-}
-
 bool is_valid_syntax(char *str)
 {
     if (!str || !*str)
@@ -55,21 +33,21 @@ bool is_within_int_range(char *str)
 {
     long num;
 
-    num = atol(str);
-    if (num > 2147483647 || num < -2147483648)
-        return (0);
-    return (1);
+    if(!ft_atol(str, &num))
+        return (false);
+  return(true);
 }
 
 bool parse_number(char *str, int *number)
 {
-    if (is_valid_syntax(str) == 1 && is_within_int_range(str) == 1)
-    {
-        *number = atoi(str);
-        return (1);
-    }
-    else
-        return (0);
+    long value;
+
+    if (!is_valid_syntax(str))
+        return (false);
+    if (!ft_atol(str, &value))
+        return (false);
+    *number = (int)value;
+    return (true);
 }
 int validate_and_add(t_stack_list *a, char *str)
 {
@@ -85,4 +63,29 @@ int validate_and_add(t_stack_list *a, char *str)
         return (0);
     add_node_back(a, node);
     return (1);
+}
+
+bool check_duplicate_value(t_stack *stack, int value)
+{
+    while (stack)
+    {
+        if (stack->value == value)
+            return (true);
+        stack = stack->next;
+    }
+    return (false);
+}
+
+bool check_duplicate(t_stack *stack)
+{
+    t_stack *current;
+
+    current = stack;
+    while (current)
+    {
+        if (check_duplicate_value(current->next, current->value))
+            return (true);
+        current = current->next;
+    }
+    return (false);
 }
