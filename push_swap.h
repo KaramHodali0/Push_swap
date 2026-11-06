@@ -6,7 +6,7 @@
 /*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 10:40:45 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/11/05 23:35:47 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:21:54 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ typedef struct s_stack_list
 	t_stack *tail;
 	t_stack *head;
 } t_stack_list;
+
+typedef enum e_algorithm
+{
+	SIMPLE = 1,
+	MEDIUM = 2,
+	COMPLEX = 3,
+	ADAPTIVE = 4,
+	INVALID = 0
+} algorithm;
 
 void push(t_stack **src, t_stack **dst);
 void swap(t_stack_list *stack);
