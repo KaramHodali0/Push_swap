@@ -6,20 +6,39 @@
 /*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 15:54:25 by kalhouda          #+#    #+#             */
-/*   Updated: 2026/11/06 02:08:19 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:21:58 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+algorithm check_flags(int argc, char **argv)
+{
+    int i;
+
+    i = 2;
+    if (argc > 1 && argv[1][0] == '-' && argv[1][1] == '-')
+    {
+        if (strcmp(argv[1], "--simple") == 0)
+            return (1);
+        else if (strcmp(argv[1], "--medium") == 0)
+            return (2);
+        else if (strcmp(argv[1], "--complex") == 0)
+            return (3);
+        else if (strcmp(argv[1], "--adaptive") == 0)
+            return (4);
+    }
+    return (0);
+}
+
 int main(int argc, char **argv)
 {
-    int             i;
-    int             *rank;
-    char            **numbers;
-    char            **args;
-    t_stack_list    a;
-    t_stack_list    b;
+    int i;
+    int *rank;
+    char **numbers;
+    char **args;
+    t_stack_list a;
+    t_stack_list b;
 
     a.head = NULL;
     a.tail = NULL;
