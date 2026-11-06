@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdbool.h>
 
 bool check_duplicate(t_stack *stack)
 {
