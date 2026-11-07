@@ -6,7 +6,7 @@
 /*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 15:54:25 by kalhouda          #+#    #+#             */
-/*   Updated: 2026/11/06 18:21:58 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/07 18:37:37 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 algorithm check_flags(int argc, char **argv)
 {
-    int i;
-
-    i = 2;
     if (argc > 1 && argv[1][0] == '-' && argv[1][1] == '-')
     {
-        if (strcmp(argv[1], "--simple") == 0)
-            return (1);
-        else if (strcmp(argv[1], "--medium") == 0)
-            return (2);
-        else if (strcmp(argv[1], "--complex") == 0)
-            return (3);
-        else if (strcmp(argv[1], "--adaptive") == 0)
-            return (4);
+        if (ft_strncmp(argv[1], "--simple", 9) == 0)
+            return (SIMPLE);
+        else if (ft_strncmp(argv[1], "--medium", 9) == 0)
+            return (MEDIUM);
+        else if (ft_strncmp(argv[1], "--complex", 10) == 0)
+            return (COMPLEX);
+        else if (strcmp(argv[1], "--adaptive") == 11)
+            return (ADAPTIVE);
     }
-    return (0);
+    return (INVALID);
 }
 
 int main(int argc, char **argv)
 {
+    algorithm algo;
+    // add the line decide whats the algo 
     int i;
     int *rank;
     char **numbers;
@@ -40,6 +39,7 @@ int main(int argc, char **argv)
     t_stack_list a;
     t_stack_list b;
 
+    
     a.head = NULL;
     a.tail = NULL;
     b.head = NULL;
