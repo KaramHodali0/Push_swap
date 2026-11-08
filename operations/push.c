@@ -29,12 +29,16 @@ void push(t_stack **src, t_stack **dst)
     *dst = tmp;
 }
 
-void pb(t_stack **a, t_stack **b)
+void pb(t_stack **a, t_stack **b, operations *stats)
 {
+    stats->pb++;
+    stats->total_op++;
     push(a, b);
 }
 
-void pa(t_stack **a, t_stack **b)
+void pa(t_stack **a, t_stack **b, operations *stats)
 {
+    stats->pa++;
+    stats->total_op++;
     push(b, a);
 }

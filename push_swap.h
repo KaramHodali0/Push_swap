@@ -6,7 +6,7 @@
 /*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 10:40:45 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/11/06 18:21:54 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/08 15:45:49 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,25 @@ typedef enum e_algorithm
 	MEDIUM = 2,
 	COMPLEX = 3,
 	ADAPTIVE = 4,
+	BENCH = 5,
 	INVALID = 0
 } algorithm;
+
+typedef struct s_operations
+{
+    int sa = 0;
+    int sb = 0;
+    int ss = 0;
+    int pa = 0;
+    int pb = 0;
+    int ra = 0;
+    int rb = 0;
+    int rr = 0;
+    int rra = 0;
+    int rrb = 0;
+    int rrr = 0;
+    int total_op = 0;
+}   operations;
 
 void push(t_stack **src, t_stack **dst);
 void swap(t_stack_list *stack);

@@ -6,7 +6,7 @@
 /*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 15:09:25 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/10/23 22:01:35 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/08 15:45:49 by kalhouda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,22 @@ void rotate(t_stack_list *stack)
 	stack->tail = tmp;
 }
 
-void ra(t_stack_list *a)
+void ra(t_stack_list *a, operations *stats)
 {
+	stats->ra++;
+	stats->total_op++;
 	rotate(a);
 }
 
-void rb(t_stack_list *b)
+void rb(t_stack_list *b, operations *stats)
 {
+	stats->rb++;
+	stats->total_op++;
 	rotate(b);
 }
 
-void rr(t_stack_list *a, t_stack_list *b)
+void rr(t_stack_list *a, t_stack_list *b, operations *stats)
 {
-	ra(a);
-	rb(b);
+	ra(a, stats);
+	rb(b, stats);
 }
