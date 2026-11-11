@@ -14,17 +14,15 @@
 
 void swap(t_stack_list *stack)
 {
-	if (!stack || !stack->head || !stack->head->next)
-		return;
-
 	t_stack *next_current;
 	t_stack *head;
 	t_stack *last;
 
+	if (!stack || !stack->head || !stack->head->next)
+		return;
 	head = stack->head;
 	next_current = head->next;
 	last = next_current->next;
-
 	next_current->next = head;
 	next_current->prev = NULL;
 	head->prev = next_current;
@@ -38,16 +36,16 @@ void swap(t_stack_list *stack)
 
 void sa(t_stack_list *a, operations *stats)
 {
-	if (!a || (!(a)->head))
+	if (!a || !(a)->head || !a->head->next)
 		return;
-		stats->sa++;
-		stats->total_op++;
+	stats->sa++;
+	stats->total_op++;
 	swap(a);
 }
 
 void sb(t_stack_list *b, operations *stats)
 {
-	if (!b || (!(b)->head))
+	if (!b || !b->head || !b->head->next)
 		return;
 	stats->sb++;
 	stats->total_op++;
@@ -56,6 +54,8 @@ void sb(t_stack_list *b, operations *stats)
 
 void ss(t_stack_list *a, t_stack_list *b, operations *stats)
 {
-	sa(a, stats);
-	sb(b, stats);
+	stats->ss++;
+	stats->total_op++;
+	swap(a);
+	swap(b):
 }

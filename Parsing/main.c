@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	t_stack_list	b;
 
 	// add the line decide whats the algo
+	operations stats = {0};
 	a.head = NULL;
 	a.tail = NULL;
 	b.head = NULL;

@@ -46,29 +46,40 @@ typedef enum e_algorithm
 
 typedef struct s_operations
 {
-    int sa = 0;
-    int sb = 0;
-    int ss = 0;
-    int pa = 0;
-    int pb = 0;
-    int ra = 0;
-    int rb = 0;
-    int rr = 0;
-    int rra = 0;
-    int rrb = 0;
-    int rrr = 0;
-    int total_op = 0;
+    int sa;
+    int sb;
+    int ss;
+    int pa;
+    int pb;
+    int ra;
+    int rb;
+    int rr;
+    int rra;
+    int rrb;
+    int rrr;
+    int total_op;
 }   operations;
 
-void push(t_stack **src, t_stack **dst);
-void swap(t_stack_list *stack);
-void rotate(t_stack_list *stack);
-void pb(t_stack **a, t_stack **b);
-void ba(t_stack **a, t_stack **b);
-void ra(t_stack **a);
-void rb(t_stack **b);
-void sa(t_stack **a);
-void sb(t_stack **b);
+void    push(t_stack_list *src, t_stack_list *dst);
+void    pa(t_stack_list *a, t_stack_list *b, operations *stats);
+void    pb(t_stack_list *a, t_stack_list *b, operations *stats);
+
+void    swap(t_stack_list *stack);
+void    sa(t_stack_list *a, operations *stats);
+void    sb(t_stack_list *b, operations *stats);
+void    ss(t_stack_list *a, t_stack_list *b, operations *stats);
+
+void    rotate(t_stack_list *stack);
+void    ra(t_stack_list *a, operations *stats);
+void    rb(t_stack_list *b, operations *stats);
+void    rr(t_stack_list *a, t_stack_list *b, operations *stats);
+
+void    reverse_rotate(t_stack_list *stack);
+void    rra(t_stack_list *a, operations *stats);
+void    rrb(t_stack_list *b, operations *stats);
+void    rrr(t_stack_list *a, t_stack_list *b, operations *stats);
+
+void radix_sort(t_stack_list *a, t_stack_list *b, operations *stats);
 void free_split(char **numbers);
 void free_stack(t_stack_list *stack);
 t_stack *new_node(int value);
@@ -88,5 +99,4 @@ int find_max_rank(t_stack *b);
 int find_max_position(t_stack *b);
 void sort_back_to_a(t_stack_list *a, t_stack_list *b);
 int validate_and_add(t_stack_list *a, char *str);
-
 #endif

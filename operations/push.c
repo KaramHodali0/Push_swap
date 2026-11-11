@@ -12,31 +12,35 @@
 
 #include "push_swap.h"
 
-void push(t_stack **src, t_stack **dst)
+void push(t_stack_list *src, t_stack_list *dst)
 {
     t_stack *tmp;
 
-    if (!src || !*src)
+    if (!src || !src->head || !dst)
         return;
-    tmp = *src;
-    *src = tmp->next;
-    if (*src)
-        (*src)->prev = NULL;
-    tmp->next = *dst;
-    if (*dst)
-        (*dst)->prev = tmp;
+    tmp = src->head;
+    src->head = tmp->next;
+    if (src->head)
+        src->head->prev = NULL;
+    else
+        src->tail = NULL;
+    tmp->next = dst->head;
     tmp->prev = NULL;
-    *dst = tmp;
+    if (dst->head)
+        dst->head->prev = tmp;
+    else
+        dst->tail= tmp;
+    dst->head = tmp;
 }
 
-void pb(t_stack **a, t_stack **b, operations *stats)
+void pb(t_stack_list *a, t_stack_list *b, operations *stats)
 {
     stats->pb++;
     stats->total_op++;
     push(a, b);
 }
 
-void pa(t_stack **a, t_stack **b, operations *stats)
+void pa(t_stack_list *a, t_stack_list *b, operations *stats)
 {
     stats->pa++;
     stats->total_op++;

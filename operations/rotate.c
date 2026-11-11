@@ -47,6 +47,8 @@ void rb(t_stack_list *b, operations *stats)
 
 void rr(t_stack_list *a, t_stack_list *b, operations *stats)
 {
+	stats->rr++;
+	stats->total_op++;
 	ra(a, stats);
 	rb(b, stats);
 }
