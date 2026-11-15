@@ -79,16 +79,41 @@ void    rra(t_stack_list *a, operations *stats);
 void    rrb(t_stack_list *b, operations *stats);
 void    rrr(t_stack_list *a, t_stack_list *b, operations *stats);
 
-void radix_sort(t_stack_list *a, t_stack_list *b, operations *stats);
+t_stack     *new_node(int value);
+void        add_node_back(t_stack_list *stack, t_stack *node);
+void        free_stack(t_stack_list *stack);
+int         size(t_stack *stack);
+
+long        ft_atol(const char *str);
+int         validate_and_add(char **args, t_stack_list *a);
+
+t_stack     *find_min(t_stack *stack);
+int         find_position(t_stack *stack, t_stack *target);
+int         stack_size(t_stack *stack);
+void        rotate_min_to_top(t_stack_list *a, operations *stats);
+void        simple_sort(t_stack_list *a, t_stack_list *b, operations *stats)
+
+void        push_chunk(t_stack_list *a, t_stack_list *b, int start, int end, operations *stats);
+int         find_max_position(t_stack *stack);
+void        sort_back_to_a(t_stack_list *a, t_stack_list *b, operations *stats);
+void        chunk_sort(t_stack_list *a, t_stack_list *b, operations *stats);
+
+int         find_max_rank(t_stack *stack);
+void        init_stack(t_stack_list *a, int argc, char **argv);
+int         get_max_bits(int max_rank);
+void        radix_sort(t_stack_list *a, t_stack_list *b, operations *stats);
+
+void        assign_ranks(t_stack *stack);
+int         find_rank(t_stack *stack, int value);
+
+
+
+
 void free_split(char **numbers);
-void free_stack(t_stack_list *stack);
-t_stack *new_node(int value);
-void add_node_back(t_stack_list *stack, t_stack *node);
 bool check_duplicate(char *str);
 bool is_valid_syntax(char *str);
 bool is_within_int_range(char *str);
 void init_stack(t_stack_list *a, int argc, char **argv);
-void init_rank(t_stack_list *a, int *rank, int len);
 int *get_copy(t_stack *stack);
 void check_sorted(int *arr, int *rank, int len);
 int *get_rank(t_stack *stack);
@@ -99,4 +124,6 @@ int find_max_rank(t_stack *b);
 int find_max_position(t_stack *b);
 void sort_back_to_a(t_stack_list *a, t_stack_list *b);
 int validate_and_add(t_stack_list *a, char *str);
+void	adaptive_sort(t_stack_list *a, t_stack_list *b, operations *stats);
+
 #endif

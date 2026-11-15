@@ -24,9 +24,9 @@ static void    push_chunk(t_stack_list *a, t_stack_list *b, int start , int end)
     {
         node = a->head;
         if (node->rank >= start && node->rank <= end)
-            pb(a,b);
+            pb(a, b, stats);
         else
-            ra(a);
+            ra(a, b, stats);
         i++;
     }
 }
@@ -39,15 +39,18 @@ void    sort_chunks(t_stack_list *a, t_stack_list *b)
     int total_len;
 
     total_len = size(a->head);
+    if (total_len < 2)
+        return;
     root = get_chunk_size(total_len);
     start = 0;
     end = root - 1;
     while (start < total_len)
     {
-        push_chunk(a, b, start, end);  
+        push_chunk(a, b, start, end, stats);  
         start = end + 1;
         end = end + root;
     }
+    sort_back_to_a(a, b, stats);
 }
 
 int   find_max_rank(t_stack *b)
@@ -70,10 +73,10 @@ int   find_max_rank(t_stack *b)
 
 int find_max_position(t_stack *b)
 {
-    int max_rank;
-    int max_pos;
-    t_stack *node;
-    int i;
+    t_stack     *node;
+    int         i;
+    int         max_rank;
+    int         max_pos;
 
     if (!b)
         return (-1);
@@ -94,35 +97,4 @@ int find_max_position(t_stack *b)
     return (max_pos);
 }
 
-void    sort_back_to_a(t_stack_list *a, t_stack_list *b)
-{
-    int max_pos;
-    int len;
-    int i;
-
-    while (b->head != NULL)
-    {
-        len = size(b->head);
-        max_pos = find_max_position(b->head);
-        if (max_pos <= len - max_pos)
-        {
-            i = 0;
-            while (i < max_pos)
-            {
-                rb(b);
-                i++;
-            }
-        }
-        else
-        {
-            i = 0;
-            while (i < len - max_pos)
-            {
-                rrb(b);
-                i++;
-            }
-        }
-        pa(a, b);
-    }
-}
 

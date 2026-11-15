@@ -10,32 +10,70 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-float	disorder(t_stack *stack, long size)
+int	*stack_to_array(t_stack *stack, long size)
 {
-	long		mistake;
-	long		total;
-	t_stack		*current;
-	t_stack		*tmp;
+	int		*arr;
+	long	i;
 
-	mistake = 0;
-	total = 0;
-	current = stack;
-	while (current && current->next)
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (NULL);
+	i = 0;
+	while (stack && i < size)
 	{
-		tmp = current->next;
-		while (tmp)
-		{
-			total++;
-			if (current->value > tmp->value)
-				mistake++;
-			tmp = tmp->next;
-		}
-		current = current->next;
+		arr[i] = stack->value;
+		i++;
+		stack = stack->next;
 	}
-	if (total == 0)
-		return (0);
-	return ((float)mistake / total);
+	if (i != size)
+	{
+		free(arr);
+		return (NULL);
+	}
+	return (arr);
+}
+
+static long	stack_size(t_stack *stack)
+{
+	long	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+
+static float	free_arrays(int *arr)
+{
+	free(arr);
+	return (-1.0f);
+}
+
+float	disorder(t_stack *stack)
+{
+	int		*arr;
+	int		*tmp;
+	long	inversions;
+	long	total;
+	long	size;
+
+	size = stack_size(stack);
+	if (size < 2)
+		return (0.0f);
+	arr = stack_to_array(stack, size);
+	if (!arr)
+		return (-1.0f);
+	tmp = malloc(sizeof(int) * size);
+	if (!tmp)
+		return(free_arrays(arr));
+	inversions = count_inversions(arr , tmp , 0, size - 1);
+	total = size * (size - 1) / 2;
+	free (arr);
+	free (tmp);
+	return ((float)inversions / total);
 }
