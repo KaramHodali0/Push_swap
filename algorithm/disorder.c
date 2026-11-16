@@ -70,10 +70,10 @@ float	disorder(t_stack *stack)
 		return (-1.0f);
 	tmp = malloc(sizeof(int) * size);
 	if (!tmp)
-		return(free_arrays(arr));
-	inversions = count_inversions(arr , tmp , 0, size - 1);
+		return (free_arrays(arr));
+	inversions = count_inversions(arr, tmp, 0, size - 1);
 	total = size * (size - 1) / 2;
-	free (arr);
-	free (tmp);
+	free(arr);
+	free(tmp);
 	return ((float)inversions / total);
 }

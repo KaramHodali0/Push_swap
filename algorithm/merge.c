@@ -1,53 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   merge.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/16 09:26:16 by mhatamle          #+#    #+#             */
+/*   Updated: 2026/11/16 10:25:43 by mhatamle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static	void merge_left(int	*arr, int *tmp, long *i, long *k, long mid)
+static void	merge_left(int *arr, int *tmp, long *i, t_merge m)
 {
-	while (*i <= mid)
+	while (*i <= m.mid)
 	{
-		tmp[*k] = arr[*i];
+		tmp[m.k] = arr[*i];
 		(*i)++;
-		(*k)++;
+		m.k++;
 	}
 }
 
-static	void merge_right(int *arr, int *tmp, long *j, long *k, long right)
+static void	merge_right(int *arr, int *tmp, long *j, t_merge m)
 {
-	while (*j <= right)
+	m.k = m.mid + 1;
+	while (*j <= m.right)
 	{
-		tmp[*k] = arr[*j];
+		tmp[m.k] = arr[*j];
 		(*j)++;
-		(*k)++;
+		m.k++;
 	}
 }
 
-long	merg_count(int *arr, int *tmp, long left, long mid, long right)
+void	copy_back(int *arr, int *tmp, t_merge m)
 {
 	long	i;
-	long	j;
-	long	k;
-	long	count;
 
-	i = left;
-	j = mid + 1;
-	k = left;
-	count = 0;
-	while (i <= mid && j <= right)
-	{
-		if (arr[i] <= arr[j])
-			tmp[k++] = arr[i++];
-		else
-		{
-			tmp[k++] = arr[j++];
-			count += mid - i + 1;
-		}
-	}
-	merge_left(arr, tmp, &i, &k, mid);
-	merge_right(arr, tmp, &j, &k, right);
-	i = left;
-	while (i <= right)
+	i = m.left;
+	while (i <= m.right)
 	{
 		arr[i] = tmp[i];
 		i++;
 	}
+}
+
+long	merge_count(int *arr, int *tmp, t_merge m)
+{
+	long	i;
+	long	j;
+	long	count;
+
+	i = m.left;
+	j = m.mid + 1;
+	m.k = m.left;
+	count = 0;
+	while (i <= m.mid && j <= m.right)
+	{
+		if (arr[i] <= arr[j])
+			tmp[m.k++] = arr[i++];
+		else
+		{
+			tmp[m.k++] = arr[j++];
+			count += m.mid - i + 1;
+		}
+	}
+	merge_left(arr, tmp, &i, m);
+	merge_right(arr, tmp, &j, m);
+	copy_back(arr, tmp, m);
 	return (count);
 }

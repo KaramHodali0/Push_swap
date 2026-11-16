@@ -3,89 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 14:27:52 by kalhouda          #+#    #+#             */
-/*   Updated: 2026/11/05 23:24:40 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/16 10:01:04 by mhatamle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool is_valid_syntax(char *str)
+bool	parse_number(char *str, int *number)
 {
-    if (!str || !*str)
-        return (false);
-    if (*str == '+' || *str == '-')
-        str++;
-    if (!*str)
-        return (false);
-    while (*str)
-    {
-        if (*str < '0' || *str > '9')
-            return (0);
-        str++;
-    }
-    return (1);
+	long	value;
+
+	if (!is_valid_syntax(str))
+		return (false);
+	if (!ft_atol(str, &value))
+		return (false);
+	*number = (int)value;
+	return (true);
 }
 
-bool is_within_int_range(char *str)
+int	validate_and_add(t_stack_list *a, char *str)
 {
-    long num;
+	int		value;
+	t_stack	*node;
 
-    if(!ft_atol(str, &num))
-        return (false);
-  return(true);
+	if (!parse_number(str, &value))
+		return (0);
+	if (check_duplicate_value(a->head, value))
+		return (0);
+	node = new_node(value);
+	if (!node)
+		return (0);
+	add_node_back(a, node);
+	return (1);
 }
 
-bool parse_number(char *str, int *number)
+bool	check_duplicate_value(t_stack *stack, int value)
 {
-    long value;
-
-    if (!is_valid_syntax(str))
-        return (false);
-    if (!ft_atol(str, &value))
-        return (false);
-    *number = (int)value;
-    return (true);
-}
-int validate_and_add(t_stack_list *a, char *str)
-{
-    int value;
-    t_stack *node;
-
-    if (!parse_number(str, &value))
-        return (0);
-    if (check_duplicate_value(a->head, value))
-        return (0);
-    node = new_node(value);
-    if (!node)
-        return (0);
-    add_node_back(a, node);
-    return (1);
+	while (stack)
+	{
+		if (stack->value == value)
+			return (true);
+		stack = stack->next;
+	}
+	return (false);
 }
 
-bool check_duplicate_value(t_stack *stack, int value)
+bool	check_duplicate(t_stack *stack)
 {
-    while (stack)
-    {
-        if (stack->value == value)
-            return (true);
-        stack = stack->next;
-    }
-    return (false);
-}
+	t_stack	*current;
 
-bool check_duplicate(t_stack *stack)
-{
-    t_stack *current;
-
-    current = stack;
-    while (current)
-    {
-        if (check_duplicate_value(current->next, current->value))
-            return (true);
-        current = current->next;
-    }
-    return (false);
+	current = stack;
+	while (current)
+	{
+		if (check_duplicate_value(current->next, current->value))
+			return (true);
+		current = current->next;
+	}
+	return (false);
 }

@@ -39,9 +39,10 @@ int	main(int argc, char **argv)
 	char			**args;
 	t_stack_list	a;
 	t_stack_list	b;
+	operations		stats;
 
 	// add the line decide whats the algo
-	operations stats = {0};
+	stats = {0};
 	a.head = NULL;
 	a.tail = NULL;
 	b.head = NULL;

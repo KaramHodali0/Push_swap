@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kalhouda <kalhouda@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: mhatamle <mhatamle@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 15:09:25 by mhatamle          #+#    #+#             */
-/*   Updated: 2026/11/08 15:45:49 by kalhouda         ###   ########.fr       */
+/*   Updated: 2026/11/16 09:43:42 by mhatamle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rotate(t_stack_list *stack)
+void	rotate(t_stack_list *stack)
 {
-	t_stack *last;
-	t_stack *tmp;
-	t_stack *first_next;
+	t_stack	*last;
+	t_stack	*tmp;
+	t_stack	*first_next;
 
 	if (!stack || !stack->head || !stack->head->next || !stack->tail)
-		return;
+		return ;
 	last = stack->tail;
 	tmp = stack->head;
 	first_next = tmp->next;
@@ -31,21 +31,21 @@ void rotate(t_stack_list *stack)
 	stack->tail = tmp;
 }
 
-void ra(t_stack_list *a, operations *stats)
+void	ra(t_stack_list *a, operations *stats)
 {
 	stats->ra++;
 	stats->total_op++;
 	rotate(a);
 }
 
-void rb(t_stack_list *b, operations *stats)
+void	rb(t_stack_list *b, operations *stats)
 {
 	stats->rb++;
 	stats->total_op++;
 	rotate(b);
 }
 
-void rr(t_stack_list *a, t_stack_list *b, operations *stats)
+void	rr(t_stack_list *a, t_stack_list *b, operations *stats)
 {
 	stats->rr++;
 	stats->total_op++;

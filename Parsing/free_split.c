@@ -12,15 +12,15 @@
 
 #include "push_swap.h"
 
-void free_split(char **numbers)
+void	free_split(char **numbers)
 {
-   int i;
+	int	i;
 
-   i = 0;
-   while (numbers[i] != NULL)
-   {
-      free(numbers[i]);
-      i++;
-   }
-   free(numbers);
+	i = 0;
+	while (numbers[i] != NULL)
+	{
+		free(numbers[i]);
+		i++;
+	}
+	free(numbers);
 }

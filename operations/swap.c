@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void swap(t_stack_list *stack)
+void	swap(t_stack_list *stack)
 {
-	t_stack *next_current;
-	t_stack *head;
-	t_stack *last;
+	t_stack	*next_current;
+	t_stack	*head;
+	t_stack	*last;
 
 	if (!stack || !stack->head || !stack->head->next)
-		return;
+		return ;
 	head = stack->head;
 	next_current = head->next;
 	last = next_current->next;
@@ -34,28 +34,28 @@ void swap(t_stack_list *stack)
 	stack->head = next_current;
 }
 
-void sa(t_stack_list *a, operations *stats)
+void	sa(t_stack_list *a, operations *stats)
 {
 	if (!a || !(a)->head || !a->head->next)
-		return;
+		return ;
 	stats->sa++;
 	stats->total_op++;
 	swap(a);
 }
 
-void sb(t_stack_list *b, operations *stats)
+void	sb(t_stack_list *b, operations *stats)
 {
 	if (!b || !b->head || !b->head->next)
-		return;
+		return ;
 	stats->sb++;
 	stats->total_op++;
 	swap(b);
 }
 
-void ss(t_stack_list *a, t_stack_list *b, operations *stats)
+void	ss(t_stack_list *a, t_stack_list *b, operations *stats)
 {
 	stats->ss++;
 	stats->total_op++;
 	swap(a);
-	swap(b):
+	swap(b) :
 }
