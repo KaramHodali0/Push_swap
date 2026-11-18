@@ -95,36 +95,42 @@ long            	count_inversions(int *arr, int *tmp, long left, long right);
 void	            copy_back(int *arr, int *tmp, t_merge m);
 long	            merge_count(int *arr, int *tmp, t_merge m);
 int	                size(t_stack *stack);
+
 t_stack         	*new_node(int value);
 void	            add_node_back(t_stack_list *stack, t_stack *node);
 int	                check_overflow(long number, int digit, long limit);
 int	                get_sign(const char **str);
 long            	get_limit(int sign);
+
 int	                parse_digits(const char *str, long *number, long limit);
 int	                ft_atol(const char *str, long *result);
 void	            free_split(char **numbers);
 void            	free_stack(t_stack_list *stack);
+
 bool	            is_valid_syntax(char *str);
 bool            	is_within_int_range(char *str);
 bool            	parse_number(char *str, int *number);
 int             	validate_and_add(t_stack_list *a, char *str);
+
 bool	            check_duplicate_value(t_stack *stack, int value);
 bool            	check_duplicate(t_stack *stack);
 int	                get_max_bits(t_stack *a);
 void            	radix_sort(t_stack_list *a, t_stack_list *b, operations *stats);
+
 void            	init_stack(t_stack_list *a, int argc, char **argv);
 void            	init_rank(t_stack_list *a, int *rank, int len);
 int	                *get_copy(t_stack *stack);
 void            	check_sorted(int *arr, int *rank, int len);
+
 int             	*get_rank(t_stack *stack);
 int	                get_chunk_size(int len);
-
 void            	sort_back_to_a(t_stack_list *a, t_stack_list *b);
 
 void	            sort_chunks(t_stack_list *a, t_stack_list *b);
 int	                find_max_rank(t_stack *b);
 int             	find_max_position(t_stack *b);
 t_stack         	*find_min(t_stack *stack);
+
 int             	find_position(t_stack *stack, t_stack *target);
 int             	stack_size(t_stack *stack);
 void            	rotate_min_to_top(t_stack_list *a, operations *stats);
